@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jang.springcrud.mapper.MemberMapper">
+    
+    <insert id="insertMember" parameterType="MemberDTO">
+        INSERT
+          INTO EMPLOYEE(
+               EMPID,
+               EMPNM,
+               EMPYN
+      ) VALUES(
+               #{empId},
+               #{empNm},
+               'N'
+               )
+    </insert>
+    
+    <select id="selectMemberList" parameterType="MemberDTO" resultType="MemberDTO">
+        SELECT
+               EMPID,
+               EMPNM,
+               EMPYN
+          FROM EMPLOYEE
+    </select>
+    
+    <update id="updateMember" parameterType="MemberDTO">
+        UPDATE EMPLOYEE
+           SET
+               EMPNM = #{empNm}
+         WHERE
+               EMPID = #{empId}
+    </update>
+    
+    <update id="deleteMember">
+        UPDATE EMPLOYEE
+           SET
+               EMPYN = 'Y'
+         WHERE
+             EMPID = #{empId}
+    </update>
+    
+</mapper>
